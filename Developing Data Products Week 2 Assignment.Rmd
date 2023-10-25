@@ -1,0 +1,33 @@
+---
+title: "Developing Data Products Week 2 Assignment"
+output: html_document
+name: Kimberly Yuen
+date: October 25 2023
+---
+
+## Introduction
+
+Instructions: 
+Create a web page using R Markdown that features a map created with Leaflet. 
+
+Host your webpage on either GitHub Pages, RPubs, or NeoCities.
+
+Your webpage must contain the date that you created the document, and it must contain a map created with Leaflet. We would love to see you show off your creativity! 
+
+I will create an interactive map of my top 5 Asian restaurants in Stockholm, Sweden.
+
+## Load data
+
+```{r}
+library(leaflet)
+restaurants<-data.frame(lat=c(59.31832265376712,59.332982854383786,59.34778201788994,59.340709858423516,59.313661778540045),lng=c(18.053591602065683,18.047128029334733,18.066917468119044,18.041738941424036,18.08569378976499),name=c("Lao Lao","Eat East","Hao Kök","Minh Mat","Mormors Restaurang & Dumplings"))
+```
+
+## Plot map
+Plotting my Top 5 Asian restaurants in Stockholm.
+
+```{r}
+my_map<- restaurants %>% leaflet() %>% addTiles() %>% addMarkers(popup =restaurants$name,clusterOptions = markerClusterOptions())
+my_map
+```
+
